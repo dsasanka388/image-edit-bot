@@ -157,3 +157,39 @@ async def crop_command(client, message: Message):
     crop_center(input_file, output_file)
 
     await message.reply_photo(output_file)
+@app.on_message(filters.command("removebg"))
+async def removebg_command(client, message: Message):
+    user_id = message.from_user.id
+
+    if user_id not in user_images:
+        return await message.reply_text("❌ Pehle ek photo bhejo.")
+
+    input_file = user_images[user_id]
+    output_file = f"{OUTPUT_PATH}/{user_id}_nobg.png"
+
+    try:
+        remove_background(input_file, output_file)
+        await message.reply_photo(output_file)
+    except Exception as e:
+        await message.reply_text(f"❌ Error: {e}")
+
+
+@app.on_message(filters.command("help"))
+async def help_command(client, message: Message):
+    await message.reply_text(
+        "📷 Image Edit Bot\n\n"
+        "1. Send a photo\n"
+        "2. Then use any command:\n\n"
+        "/bw\n"
+        "/blur\n"
+        "/sharpen\n"
+        "/rotate\n"
+        "/resize\n"
+        "/crop\n"
+        "/removebg"
+    )
+
+
+if __name__ == "__main__":
+    print("Bot Started...")
+    app.run()
