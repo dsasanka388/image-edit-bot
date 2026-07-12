@@ -1,0 +1,8 @@
+pyrogram
+tgcrypto
+pillow
+opencv-python-headless
+rembg
+python-dotenv
+requests
+numpy
