@@ -8,16 +8,6 @@ from config import (
     BOT_TOKEN,
     DOWNLOAD_PATH,
 )
-from pyrogram import Client, filters
-from pyrogram.types import Message
-from PIL import Image
-
-from config import (
-    API_ID,
-    API_HASH,
-    BOT_TOKEN,
-    DOWNLOAD_PATH,
-)
 
 app = Client(
     "ImageEditBot",
