@@ -114,3 +114,46 @@ async def sharpen_command(client, message: Message):
     sharpen(input_file, output_file)
 
     await message.reply_photo(output_file)
+@app.on_message(filters.command("rotate"))
+async def rotate_command(client, message: Message):
+    user_id = message.from_user.id
+
+    if user_id not in user_images:
+        return await message.reply_text("❌ Pehle ek photo bhejo.")
+
+    input_file = user_images[user_id]
+    output_file = f"{OUTPUT_PATH}/{user_id}_rotate.jpg"
+
+    rotate(input_file, output_file)
+
+    await message.reply_photo(output_file)
+
+
+@app.on_message(filters.command("resize"))
+async def resize_command(client, message: Message):
+    user_id = message.from_user.id
+
+    if user_id not in user_images:
+        return await message.reply_text("❌ Pehle ek photo bhejo.")
+
+    input_file = user_images[user_id]
+    output_file = f"{OUTPUT_PATH}/{user_id}_resize.jpg"
+
+    resize_image(input_file, output_file)
+
+    await message.reply_photo(output_file)
+
+
+@app.on_message(filters.command("crop"))
+async def crop_command(client, message: Message):
+    user_id = message.from_user.id
+
+    if user_id not in user_images:
+        return await message.reply_text("❌ Pehle ek photo bhejo.")
+
+    input_file = user_images[user_id]
+    output_file = f"{OUTPUT_PATH}/{user_id}_crop.jpg"
+
+    crop_center(input_file, output_file)
+
+    await message.reply_photo(output_file)
