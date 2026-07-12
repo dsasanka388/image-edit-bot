@@ -36,7 +36,8 @@ async def save_photo(client, message: Message):
     file_path = await message.download(
         file_name=f"{DOWNLOAD_PATH}/{user_id}.jpg"
     )
-
+logging.info("Crop command received")
+await message.reply_text("Crop command received")
     user_images[user_id] = file_path
 
     await message.reply_text("✅ Photo saved successfully!")
