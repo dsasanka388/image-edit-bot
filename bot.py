@@ -1,3 +1,6 @@
+import logging
+
+logging.basicConfig(level=logging.INFO)
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from PIL import Image
