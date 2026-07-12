@@ -8,6 +8,16 @@ from config import (
     BOT_TOKEN,
     DOWNLOAD_PATH,
 )
+from pyrogram import Client, filters
+from pyrogram.types import Message
+from PIL import Image
+
+from config import (
+    API_ID,
+    API_HASH,
+    BOT_TOKEN,
+    DOWNLOAD_PATH,
+)
 
 app = Client(
     "ImageEditBot",
@@ -69,3 +79,6 @@ async def crop_image(client, message: Message):
 
     except Exception as e:
         await message.reply_text(f"❌ Crop failed:\n{e}")
+if __name__ == "__main__":
+    print("Bot Started...")
+    app.run()
