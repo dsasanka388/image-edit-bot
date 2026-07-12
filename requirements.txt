@@ -3,6 +3,5 @@ tgcrypto
 pillow
 opencv-python-headless
 rembg
+onnxruntime
 python-dotenv
-requests
-numpy
