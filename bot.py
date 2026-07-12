@@ -1,3 +1,9 @@
+@app.on_message(filters.command("crop"))
+async def crop_image(client, message: Message):
+    await message.reply_text("Crop command received")
+
+    user_id = message.from_user.id
+    ...
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from PIL import Image
