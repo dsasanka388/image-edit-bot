@@ -3,7 +3,10 @@ async def crop_image(client, message: Message):
     await message.reply_text("Crop command received")
 
     user_id = message.from_user.id
-    ...
+
+    if user_id not in user_images:
+        await message.reply_text("❌ Pehle photo bhejo.")
+        return
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from PIL import Image
