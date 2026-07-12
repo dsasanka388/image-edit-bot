@@ -71,3 +71,46 @@ async def save_photo(client, message: Message):
         "/resize\n"
         "/removebg"
     )
+@app.on_message(filters.command("bw"))
+async def bw_command(client, message: Message):
+    user_id = message.from_user.id
+
+    if user_id not in user_images:
+        return await message.reply_text("❌ Pehle ek photo bhejo.")
+
+    input_file = user_images[user_id]
+    output_file = f"{OUTPUT_PATH}/{user_id}_bw.jpg"
+
+    black_white(input_file, output_file)
+
+    await message.reply_photo(output_file)
+
+
+@app.on_message(filters.command("blur"))
+async def blur_command(client, message: Message):
+    user_id = message.from_user.id
+
+    if user_id not in user_images:
+        return await message.reply_text("❌ Pehle ek photo bhejo.")
+
+    input_file = user_images[user_id]
+    output_file = f"{OUTPUT_PATH}/{user_id}_blur.jpg"
+
+    blur(input_file, output_file)
+
+    await message.reply_photo(output_file)
+
+
+@app.on_message(filters.command("sharpen"))
+async def sharpen_command(client, message: Message):
+    user_id = message.from_user.id
+
+    if user_id not in user_images:
+        return await message.reply_text("❌ Pehle ek photo bhejo.")
+
+    input_file = user_images[user_id]
+    output_file = f"{OUTPUT_PATH}/{user_id}_sharp.jpg"
+
+    sharpen(input_file, output_file)
+
+    await message.reply_photo(output_file)
